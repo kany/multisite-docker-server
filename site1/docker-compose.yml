@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+
+    ## Use latest Nginx to serve
+    nginx1:
+        image: nginx:latest
+        volumes:
+            - ./:/var/www
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - traefik_default
+        labels:
+            - traefik.enabled=true
+            - traefik.backend=nginx1
+            - traefik.docker.network=traefik_default
+            - traefik.frontend.rule=Host:nginx1.localhost
+            - traefik.port=80
+
+    ## Use latest PHP
+    php1:
+        image: php:fpm
+        volumes:
+            - ./:/var/www
+        networks:
+            - traefik_default
+
+networks:
+    traefik_default:
+        external:
+            name: traefik_default
