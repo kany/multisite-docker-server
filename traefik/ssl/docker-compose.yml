@@ -14,3 +14,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
       - ./traefik.toml:/etc/traefik/traefik.toml:ro # SSL Support
       - ./acme:/etc/traefik/acme # SSL Support
+    networks:
+      - traefik
+    
+networks:
+  traefik:
+    name: traefik
