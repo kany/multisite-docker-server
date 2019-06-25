@@ -1,5 +1,4 @@
-version: '3.7'
-
+version: "3.7"
 services:
 
     db:
@@ -9,12 +8,11 @@ services:
         env_file:
             - db.env
         ports:
-            - '3306:3306'
+            - "3306:3306"
         volumes:
             - ./db:/var/lib/mysql
         networks:
             - traefik
-
 
 networks:
     traefik:

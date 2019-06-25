@@ -3,4 +3,4 @@
 acme
 .env
 db.env
-mysql/mysql
+db
