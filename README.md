@@ -13,4 +13,7 @@ Quickly setup multiple websites via Docker containers on a single server.
 Traefik can either host insecure content or SSL content. If using the SSL Traefik docker-compose command, each service will receive its own SSL certificate provided by `LetsEncrypt` through `Traefik`. Traefik will take care of automatically renewing these certs as well. Navigate to either the `/insecure` or `/ssl` directory based on your needs.
 3) Start up each of your sites using `docker-compose up -d` in the directory of the site. Replicate the `site` folder structure as needed for other projects and update accordingly. Drop in your html/php files to each directory.
 
+**NOTE:** If using the SSL Traefik config, you'll need to edit the `traefik.toml` file in that directory. There is a line to add your email and default domain. These will be used to register each SSL cert. Without this information, it won't run.
+
+
 There you go! You have a fully functioning multisite Docker server running the latest versions of Nginx and PHP, each with their own SSL certificate - all automated and virtualized. Easily transfer your entire server to another machine, scale your services quickly, or share your projects with others. 
