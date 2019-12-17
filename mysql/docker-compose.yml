@@ -2,7 +2,7 @@ version: "3.7"
 services:
 
     db:
-        image: mysql:5.7.26
+        image: mysql:5.7
         restart: always
         container_name: db
         env_file:
@@ -18,4 +18,3 @@ networks:
     traefik:
         external:
             name: traefik
-
