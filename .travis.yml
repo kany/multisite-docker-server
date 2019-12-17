@@ -7,9 +7,11 @@ before_script:
   - cp mysql/db.env.example mysql/db.env
 
 script:
+  - docker-compose -f traefik/insecure/docker-compose.yml up -d
   - docker-compose -f site1/docker-compose.yml up -d
   - docker-compose -f site2/docker-compose.yml up -d
   - docker-compose -f mysql/docker-compose.yml up -d
+  - docker ps | grep -q traefik
   - docker ps | grep -q site1
   - docker ps | grep -q site2
   - docker ps | grep -q db
