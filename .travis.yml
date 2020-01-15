@@ -8,10 +8,8 @@ before_script:
 
 script:
   - docker-compose -f traefik/insecure/docker-compose.yml up -d
-  - docker-compose -f site1/docker-compose.yml up -d
-  - docker-compose -f site2/docker-compose.yml up -d
+  - docker-compose -f nginx-php-site/docker-compose.yml up -d
   - docker-compose -f mysql/docker-compose.yml up -d
   - docker ps | grep -q traefik
-  - docker ps | grep -q site1
-  - docker ps | grep -q site2
+  - docker ps | grep -q sitename
   - docker ps | grep -q db

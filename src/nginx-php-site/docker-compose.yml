@@ -1,10 +1,10 @@
 version: "3.7"
 services:
 
-    site1:
-        image: justintime50/nginx-php:latest
+    sitename:
+        image: justintime50/nginx-php:7.4
         restart: always
-        container_name: site1
+        container_name: sitename
         volumes:
             - ./:/var/www/html
             - ./nginx.conf:/etc/nginx/conf.d/default.conf
@@ -13,7 +13,7 @@ services:
         labels:
             - traefik.enabled=true
             - traefik.docker.network=traefik
-            - traefik.frontend.rule=Host:nginx1.localhost
+            - traefik.frontend.rule=Host:sitename.localhost
             - traefik.port=80
 
 networks:
